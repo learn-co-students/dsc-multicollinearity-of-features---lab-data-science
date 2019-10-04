@@ -238,12 +238,402 @@ Next, let's look at the correlation matrix
 boston_cont.corr()
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRIM</th>
+      <th>ZN</th>
+      <th>INDUS</th>
+      <th>CHAS</th>
+      <th>NOX</th>
+      <th>RM</th>
+      <th>AGE</th>
+      <th>DIS</th>
+      <th>PTRATIO</th>
+      <th>B</th>
+      <th>LSTAT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CRIM</td>
+      <td>1.000000</td>
+      <td>-0.200469</td>
+      <td>0.406583</td>
+      <td>-0.055892</td>
+      <td>0.420972</td>
+      <td>-0.219247</td>
+      <td>0.352734</td>
+      <td>-0.379670</td>
+      <td>0.289946</td>
+      <td>-0.385064</td>
+      <td>0.455621</td>
+    </tr>
+    <tr>
+      <td>ZN</td>
+      <td>-0.200469</td>
+      <td>1.000000</td>
+      <td>-0.533828</td>
+      <td>-0.042697</td>
+      <td>-0.516604</td>
+      <td>0.311991</td>
+      <td>-0.569537</td>
+      <td>0.664408</td>
+      <td>-0.391679</td>
+      <td>0.175520</td>
+      <td>-0.412995</td>
+    </tr>
+    <tr>
+      <td>INDUS</td>
+      <td>0.406583</td>
+      <td>-0.533828</td>
+      <td>1.000000</td>
+      <td>0.062938</td>
+      <td>0.763651</td>
+      <td>-0.391676</td>
+      <td>0.644779</td>
+      <td>-0.708027</td>
+      <td>0.383248</td>
+      <td>-0.356977</td>
+      <td>0.603800</td>
+    </tr>
+    <tr>
+      <td>CHAS</td>
+      <td>-0.055892</td>
+      <td>-0.042697</td>
+      <td>0.062938</td>
+      <td>1.000000</td>
+      <td>0.091203</td>
+      <td>0.091251</td>
+      <td>0.086518</td>
+      <td>-0.099176</td>
+      <td>-0.121515</td>
+      <td>0.048788</td>
+      <td>-0.053929</td>
+    </tr>
+    <tr>
+      <td>NOX</td>
+      <td>0.420972</td>
+      <td>-0.516604</td>
+      <td>0.763651</td>
+      <td>0.091203</td>
+      <td>1.000000</td>
+      <td>-0.302188</td>
+      <td>0.731470</td>
+      <td>-0.769230</td>
+      <td>0.188933</td>
+      <td>-0.380051</td>
+      <td>0.590879</td>
+    </tr>
+    <tr>
+      <td>RM</td>
+      <td>-0.219247</td>
+      <td>0.311991</td>
+      <td>-0.391676</td>
+      <td>0.091251</td>
+      <td>-0.302188</td>
+      <td>1.000000</td>
+      <td>-0.240265</td>
+      <td>0.205246</td>
+      <td>-0.355501</td>
+      <td>0.128069</td>
+      <td>-0.613808</td>
+    </tr>
+    <tr>
+      <td>AGE</td>
+      <td>0.352734</td>
+      <td>-0.569537</td>
+      <td>0.644779</td>
+      <td>0.086518</td>
+      <td>0.731470</td>
+      <td>-0.240265</td>
+      <td>1.000000</td>
+      <td>-0.747881</td>
+      <td>0.261515</td>
+      <td>-0.273534</td>
+      <td>0.602339</td>
+    </tr>
+    <tr>
+      <td>DIS</td>
+      <td>-0.379670</td>
+      <td>0.664408</td>
+      <td>-0.708027</td>
+      <td>-0.099176</td>
+      <td>-0.769230</td>
+      <td>0.205246</td>
+      <td>-0.747881</td>
+      <td>1.000000</td>
+      <td>-0.232471</td>
+      <td>0.291512</td>
+      <td>-0.496996</td>
+    </tr>
+    <tr>
+      <td>PTRATIO</td>
+      <td>0.289946</td>
+      <td>-0.391679</td>
+      <td>0.383248</td>
+      <td>-0.121515</td>
+      <td>0.188933</td>
+      <td>-0.355501</td>
+      <td>0.261515</td>
+      <td>-0.232471</td>
+      <td>1.000000</td>
+      <td>-0.177383</td>
+      <td>0.374044</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>-0.385064</td>
+      <td>0.175520</td>
+      <td>-0.356977</td>
+      <td>0.048788</td>
+      <td>-0.380051</td>
+      <td>0.128069</td>
+      <td>-0.273534</td>
+      <td>0.291512</td>
+      <td>-0.177383</td>
+      <td>1.000000</td>
+      <td>-0.366087</td>
+    </tr>
+    <tr>
+      <td>LSTAT</td>
+      <td>0.455621</td>
+      <td>-0.412995</td>
+      <td>0.603800</td>
+      <td>-0.053929</td>
+      <td>0.590879</td>
+      <td>-0.613808</td>
+      <td>0.602339</td>
+      <td>-0.496996</td>
+      <td>0.374044</td>
+      <td>-0.366087</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 Return "True" for positive or negative correlations that are bigger than 0.75.
 
 
 ```python
 abs(boston_cont.corr())>0.75
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRIM</th>
+      <th>ZN</th>
+      <th>INDUS</th>
+      <th>CHAS</th>
+      <th>NOX</th>
+      <th>RM</th>
+      <th>AGE</th>
+      <th>DIS</th>
+      <th>PTRATIO</th>
+      <th>B</th>
+      <th>LSTAT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CRIM</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>ZN</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>INDUS</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>CHAS</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>NOX</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>RM</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>AGE</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>DIS</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>PTRATIO</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>LSTAT</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 Remove the most problematic feature from the data.
 
