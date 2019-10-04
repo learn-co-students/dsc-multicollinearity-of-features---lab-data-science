@@ -22,6 +22,36 @@ boston = load_boston()
 
 boston_features = pd.DataFrame(boston.data, columns = boston.feature_names)
 
+# first, create bins for RAD based on the values observed. 5 values will result in 4 bins
+bins = [0, 3, 4 , 5, 24]
+bins_rad = pd.cut(boston_features['RAD'], bins)
+bins_rad = bins_rad.cat.as_unordered()
+
+# first, create bins for TAX based on the values observed. 6 values will result in 5 bins
+bins = [0, 250, 300, 360, 460, 712]
+bins_tax = pd.cut(boston_features['TAX'], bins)
+bins_tax = bins_tax.cat.as_unordered()
+
+tax_dummy = pd.get_dummies(bins_tax, prefix="TAX")
+rad_dummy = pd.get_dummies(bins_rad, prefix="RAD")
+boston_features = boston_features.drop(["RAD","TAX"], axis=1)
+boston_features = pd.concat([boston_features, rad_dummy, tax_dummy], axis=1)
+```
+
+
+```python
+boston_features.head()
+```
+
+
+```python
+# __SOLUTION__
+import pandas as pd
+from sklearn.datasets import load_boston
+boston = load_boston()
+
+boston_features = pd.DataFrame(boston.data, columns = boston.feature_names)
+
 # first, create bins for based on the values observed. 5 values will result in 4 bins
 bins = [0, 3, 4 , 5, 24]
 bins_rad = pd.cut(boston_features['RAD'], bins)
@@ -40,6 +70,7 @@ boston_features = pd.concat([boston_features, rad_dummy, tax_dummy], axis=1)
 
 
 ```python
+# __SOLUTION__
 boston_features.head()
 ```
 
@@ -214,27 +245,48 @@ Create the scatter matrix for the Boston Housing data.
 
 
 ```python
+# Your code here
+```
+
+
+![png](index_files/index_11_0.png)
+
+
+
+```python
+# __SOLUTION__
 pd.plotting.scatter_matrix(boston_features,figsize  = [10, 10]);
 ```
 
 
-![png](index_files/index_9_0.png)
+![png](index_files/index_12_0.png)
 
 
 This took a while to load. Not surprisingly, the categorical variables didn't really provide any meaningful result. remove the categorical columns associated with "RAD" and "TAX" from the data again and look at the scatter matrix again.
 
 
 ```python
+# Your code here
+```
+
+
+![png](index_files/index_14_0.png)
+
+
+
+```python
+# __SOLUTION__
 boston_cont = boston_features.iloc[:,0:11]
 ```
 
 
 ```python
+# __SOLUTION__
 pd.plotting.scatter_matrix(boston_cont,figsize  = [11, 11]);
 ```
 
 
-![png](index_files/index_12_0.png)
+![png](index_files/index_16_0.png)
 
 
 ## Correlation matrix
@@ -243,6 +295,12 @@ Next, let's look at the correlation matrix
 
 
 ```python
+# Use the .corr() method on your dataset from above
+```
+
+
+```python
+# __SOLUTION__
 boston_cont.corr()
 ```
 
@@ -445,6 +503,12 @@ Return "True" for positive or negative correlations that are bigger than 0.75.
 
 
 ```python
+
+```
+
+
+```python
+# __SOLUTION__
 abs(boston_cont.corr())>0.75
 ```
 
@@ -647,6 +711,12 @@ Remove the most problematic feature from the data.
 
 
 ```python
+
+```
+
+
+```python
+# __SOLUTION__
 boston_features = boston_features.drop("NOX",axis=1)
 ```
 
